@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+//Implement the class Box  
+class Box{
+    //l,b,h are integers representing the dimensions of the box
+    int l{};
+    int b{};
+    int h{};
+    public:
+    // Constructors: 
+    // Box();
+    Box():l{0},b{0},h{0} {}
+    // Box(int,int,int);
+    Box(int lengt, int breadth, int height): l{lengt}, b{breadth}, h{height} {}
+    // Box(Box);
+    Box(Box& B):l{B.getLength()}, b{B.getBreadth()}, h{B.getHeight()} {} 
+    
+    int getLength() const {return l;}
+    int getBreadth() const {return b;}
+    int getHeight() const {return h;}
+    long long CalculateVolume() {return (long long)l * b * h;}
+    
+    //Overload operator< as specified
+    bool operator<(Box& box){
+        if (l < box.l) return true;
+        if (l == box.l && b < box.b) return true;
+        if (l == box.l && b == box.b && h < box.h) return true;
+        return false;
+    }
+    
+    //Overload operator<< as specified
+    friend ostream& operator<<(ostream& out, const Box& B);
+};
+
+ostream& operator<<(ostream& out, const Box& B) {
+    out << B.getLength() << " " << B.getBreadth() << " " << B.getHeight();
+    return out;
+}
+
+
+void check2()
+{
+	int n;
+	cin>>n;
+	Box temp;
+	for(int i=0;i<n;i++)
+	{
+		int type;
+		cin>>type;
+		if(type ==1)
+		{
+			cout<<temp<<endl;
+		}
+		if(type == 2)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			temp=NewBox;
+			cout<<temp<<endl;
+		}
+		if(type==3)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			if(NewBox<temp)
+			{
+				cout<<"Lesser\n";
+			}
+			else
+			{
+				cout<<"Greater\n";
+			}
+		}
+		if(type==4)
+		{
+			cout<<temp.CalculateVolume()<<endl;
+		}
+		if(type==5)
+		{
+			Box NewBox(temp);
+			cout<<NewBox<<endl;
+		}
+
+	}
+}
+
+int main()
+{
+	check2();
+}
