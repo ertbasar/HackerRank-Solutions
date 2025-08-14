@@ -1,1 +1,1 @@
-My solutions for HackerRank C++ Questions
+My solutions for HackerRank Questions
