@@ -1,1 +1,1 @@
-My solutions for C questions in HackerRank
+My solutions for HackerRank Questions
